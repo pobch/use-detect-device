@@ -3,5 +3,5 @@
  */
 export const DEVICE_MINWIDTH = {
   TABLET: 768,
-  DESKTOP: 1128
+  DESKTOP: 1024
 }
