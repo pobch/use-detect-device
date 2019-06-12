@@ -7,23 +7,24 @@ const App = () => {
     <div>
       <div>This device is:</div>
       <div>
-        Mobile{' '}
         <span style={{ backgroundColor: isMobile ? 'green' : 'red', color: 'white' }}>
           {isMobile.toString()}
-        </span>
+        </span>{' '}
+        Mobile
       </div>
       <div>
-        Tablet{' '}
         <span style={{ backgroundColor: isTablet ? 'green' : 'red', color: 'white' }}>
           {isTablet.toString()}
-        </span>
+        </span>{' '}
+        Tablet
       </div>
       <div>
-        Desktop{' '}
         <span style={{ backgroundColor: isDesktop ? 'green' : 'red', color: 'white' }}>
           {isDesktop.toString()}
-        </span>
+        </span>{' '}
+        Desktop
       </div>
+      <p>Try to adjust your window's width and see the difference</p>
     </div>
   )
 }
