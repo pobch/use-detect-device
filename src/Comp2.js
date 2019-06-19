@@ -1,8 +1,8 @@
-import React from 'react'
-import { useDetectDevice } from './useDetectDevice'
+import React, { useContext } from 'react'
+import { DetectDeviceContext } from './DetectDeviceProvider'
 
 const Comp2 = () => {
-  const { isMobile, isTablet, isDesktop } = useDetectDevice()
+  const { isMobile, isTablet, isDesktop } = useContext(DetectDeviceContext)
   return (
     <div>
       <div>[Component#2] This device is:</div>

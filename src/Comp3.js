@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { DetectDeviceContext } from './DetectDeviceProvider'
 
-const Comp1 = () => {
+const Comp3 = () => {
   const { isMobile, isTablet, isDesktop } = useContext(DetectDeviceContext)
   return (
     <div>
-      <div>[Component#1] This device is:</div>
+      <div>[Component#3] This device is:</div>
       <p>
         <span style={{ backgroundColor: isMobile && 'green', color: isMobile ? 'white' : 'black' }}>
           Mobile
@@ -24,4 +24,4 @@ const Comp1 = () => {
   )
 }
 
-export default Comp1
+export default Comp3
