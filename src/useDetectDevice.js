@@ -16,6 +16,8 @@ export const useDetectDevice = () => {
   // All child components always re-render when the previous state and the new state is not
   // the same regarding to shallow compare.
 
+  // See useDetectDevice2.js implementation if you want to use a single state object
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < DEVICE_MINWIDTH.TABLET) {

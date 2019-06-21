@@ -1,10 +1,10 @@
 import React from 'react'
-import { useDetectDevice } from './useDetectDevice'
+import { useDetectDevice2 } from './useDetectDevice2'
 
 export const DetectDeviceContext = React.createContext(null)
 
 const DetectDeviceProvider = props => {
-  const device = useDetectDevice()
+  const device = useDetectDevice2()
 
   return (
     <DetectDeviceContext.Provider value={device}>
