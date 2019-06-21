@@ -3,6 +3,7 @@ import { DetectDeviceContext } from './DetectDeviceProvider'
 
 const Comp1 = () => {
   const { isMobile, isTablet, isDesktop } = useContext(DetectDeviceContext)
+
   return (
     <div>
       <div>[Component#1] This device is:</div>

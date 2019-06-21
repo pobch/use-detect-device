@@ -6,36 +6,33 @@ import { DEVICE_MINWIDTH } from './deviceWidth'
  * @returns {{ isMobile: boolean, isTablet: boolean, isDesktop: boolean }}
  */
 export const useDetectDevice = () => {
-  const [device, setDevice] = useState({
-    isMobile: window.innerWidth < DEVICE_MINWIDTH.TABLET,
-    isTablet:
-      window.innerWidth >= DEVICE_MINWIDTH.TABLET && window.innerWidth < DEVICE_MINWIDTH.DESKTOP,
-    isDesktop: window.innerWidth >= DEVICE_MINWIDTH.DESKTOP
-  })
+  const [isMobile, setIsMobile] = useState(window.innerWidth < DEVICE_MINWIDTH.TABLET)
+  const [isTablet, setIsTablet] = useState(
+    window.innerWidth >= DEVICE_MINWIDTH.TABLET && window.innerWidth < DEVICE_MINWIDTH.DESKTOP
+  )
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= DEVICE_MINWIDTH.DESKTOP)
+  // Note: If we use a single state as an object instead of 3 states as booleans,
+  // we have to ensure that we don't setState when all values in the object are the same.
+  // All child components always re-render when the previous state and the new state is not
+  // the same regarding to shallow compare.
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < DEVICE_MINWIDTH.TABLET) {
-        setDevice({
-          isMobile: true,
-          isTablet: false,
-          isDesktop: false
-        })
+        setIsMobile(true)
+        setIsTablet(false)
+        setIsDesktop(false)
       } else if (
         window.innerWidth >= DEVICE_MINWIDTH.TABLET &&
         window.innerWidth < DEVICE_MINWIDTH.DESKTOP
       ) {
-        setDevice({
-          isMobile: false,
-          isTablet: true,
-          isDesktop: false
-        })
+        setIsMobile(false)
+        setIsTablet(true)
+        setIsDesktop(false)
       } else if (window.innerWidth >= DEVICE_MINWIDTH.DESKTOP) {
-        setDevice({
-          isMobile: false,
-          isTablet: false,
-          isDesktop: true
-        })
+        setIsMobile(false)
+        setIsTablet(false)
+        setIsDesktop(true)
       }
     }
     window.addEventListener('resize', handleResize)
@@ -45,5 +42,5 @@ export const useDetectDevice = () => {
     }
   }, [])
 
-  return device
+  return { isMobile, isTablet, isDesktop }
 }
