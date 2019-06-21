@@ -15,14 +15,13 @@ export const useDetectDevice = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (!device.isMobile && window.innerWidth < DEVICE_MINWIDTH.TABLET) {
+      if (window.innerWidth < DEVICE_MINWIDTH.TABLET) {
         setDevice({
           isMobile: true,
           isTablet: false,
           isDesktop: false
         })
       } else if (
-        !device.isTablet &&
         window.innerWidth >= DEVICE_MINWIDTH.TABLET &&
         window.innerWidth < DEVICE_MINWIDTH.DESKTOP
       ) {
@@ -31,7 +30,7 @@ export const useDetectDevice = () => {
           isTablet: true,
           isDesktop: false
         })
-      } else if (!device.isDesktop && window.innerWidth >= DEVICE_MINWIDTH.DESKTOP) {
+      } else if (window.innerWidth >= DEVICE_MINWIDTH.DESKTOP) {
         setDevice({
           isMobile: false,
           isTablet: false,
@@ -44,7 +43,7 @@ export const useDetectDevice = () => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [device])
+  }, [])
 
   return device
 }
